@@ -1,0 +1,34 @@
+:root {
+  --primary: #2d3e50;
+  --secondary: #f5f6fa;
+  --accent: #4ecca3;
+  --danger: #e74c3c;
+  --text: #222;
+  --bg: #fff;
+  --blue: #4e8cff;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--blue);
+  color: #fff;
+  padding: 10px 20px;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.profile-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border

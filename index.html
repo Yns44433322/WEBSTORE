@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NADRETH HOSTING</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+  <!-- Banner Info 24 Jam -->
+  <div id="info-banner" class="marquee" style="display:none;"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <img src="https://ar-hosting.pages.dev/1759059935771.jpg" alt="Profil" class="profile-img">
+      <h1>NADRETH HOSTING</h1>
+    </div>
+    <div class="header-right">
+      <button id="theme-toggle" title="Ganti Tema"><i class="bi bi-moon"></i></button>
+      <div class="avatar-container" id="avatar-container">
+        <img src="https://ar-hosting.pages.dev/1759059935771.jpg" alt="Avatar" class="avatar">
+        <div id="avatar-popup" class="avatar-popup">publish</div>
+      </div>
+      <button id="dev-login-btn">Daftar Dev</button>
+      <button id="dev-logout-btn" style="display:none;">Keluar Dev</button>
+    </div>
+  </header>
+
+  <!-- Landing Page -->
+  <main id="landing">
+    <h2>Selamat datang di NADRETH HOSTING</h2>
+    <button id="list-produk-btn">List Produk</button>
+    <button id="saran-btn">Saran & Bantuan</button>
+  </main>
+
+  <!-- List Produk -->
+  <section id="produk-list-section" style="display:none;">
+    <h2>Daftar Produk</h2>
+    <div id="produk-list"></div>
+    <button id="back-landing-btn">Kembali</button>
+  </section>
+
+  <!-- Saran & Bantuan -->
+  <section id="saran-section" style="display:none;">
+    <h2>Saran & Bantuan</h2>
+    <form id="saran-form">
+      <textarea id="saran-input" placeholder="Tulis saran atau pertanyaan..." required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+    <button id="back-saran-btn">Kembali</button>
+  </section>
+
+  <!-- Modal Detail Produk -->
+  <div id="produk-detail-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-produk-detail">×</span>
+      <img id="detail-img" class="produk-img" src="" alt="Gambar Produk">
+      <h3 id="detail-nama"></h3>
+      <p id="detail-harga"></p>
+      <ul id="detail-benefit"></ul>
+      <p id="detail-status"></p>
+      <button id="beli-sekarang-btn">Beli Sekarang</button>
+      <button id="saran-produk-btn" title="Saran & Bantuan"><i class="bi bi-exclamation-circle"></i></button>
+    </div>
+  </div>
+
+  <!-- Modal Pembayaran -->
+  <div id="pembayaran-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-pembayaran">×</span>
+      <h3>Pilih Metode Pembayaran</h3>
+      <div id="metode-list"></div>
+      <div id="pembayaran-detail" style="display:none;">
+        <h4 id="metode-title"></h4>
+        <img id="metode-img" src="" alt="Logo" style="width:60px;">
+        <p id="metode-info"></p>
+        <div id="barcode-qris" style="display:none;">
+          <img src="https://ar-hosting.pages.dev/1756913721550.jpg" alt="QRIS" style="width:120px;">
+        </div>
+        <form id="diskon-form-checkout" style="margin:10px 0;">
+          <input type="text" id="diskon-input-checkout" placeholder="Kode Diskon">
+          <button type="submit">Cek Diskon</button>
+        </form>
+        <div id="diskon-msg" style="font-size:0.95em;"></div>
+        <p id="total-bayar"></p>
+        <div id="countdown"></div>
+        <button id="cancel-bayar-btn">Cancel</button>
+        <button id="sudah-bayar-btn">Sudah Bayar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Dev Modal -->
+  <div id="dev-login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-login-modal">×</span>
+      <h3>Login Developer</h3>
+      <form id="dev-login-form">
+        <input type="text" id="dev-username" placeholder="Username" required>
+        <input type="password" id="dev-password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <div id="dev-login-error" class="error"></div>
+    </div>
+  </div>
+
+  <!-- Dashboard Dev -->
+  <section id="dev-dashboard" style="display:none;">
+    <h2>Dashboard Developer</h2>
+    <!-- Banner Info -->
+    <div>
+      <h3>Info Banner 24 Jam</h3>
+      <form id="banner-form">
+        <input type="text" id="banner-input" placeholder="Teks banner berjalan">
+        <button type="submit">Set Banner</button>
+        <button type="button" id="remove-banner-btn">Hapus Banner</button>
+      </form>
+    </div>
+    <!-- Produk -->
+    <div>
+      <h3>Kelola Produk</h3>
+      <form id="produk-form">
+        <input type="hidden" id="produk-id">
+        <input type="text" id="produk-nama" placeholder="Nama Produk" required>
+        <input type="number" id="produk-harga" placeholder="Harga" required>
+        <input type="text" id="produk-gambar" placeholder="URL Gambar" required>
+        <textarea id="produk-benefit" placeholder="Benefit (1 per baris)" required></textarea>
+        <label>
+          <input type="checkbox" id="produk-sold"> Sold
+        </label>
+        <label>
+          <input type="checkbox" id="produk-publish"> Publish
+        </label>
+        <button type="submit">Simpan Produk</button>
+        <button type="button" id="produk-cancel-btn">Batal</button>
+      </form>
+      <div id="dev-produk-list"></div>
+    </div>
+    <!-- Kode Diskon -->
+    <div>
+      <h3>Kode Diskon</h3>
+      <form id="diskon-form">
+        <input type="text" id="diskon-kode" placeholder="Kode Diskon" required>
+        <input type="number" id="diskon-value" placeholder="Nominal/Persen" required>
+        <select id="diskon-type">
+          <option value="percent">%</option>
+          <option value="nominal">Nominal</option>
+        </select>
+        <input type="date" id="diskon-expiry" required>
+        <button type="submit">Tambah Diskon</button>
+      </form>
+      <div id="dev-diskon-list"></div>
+    </div>
+    <!-- Saran & Bantuan -->
+    <div>
+      <h3>Pesan Saran & Bantuan</h3>
+      <div id="dev-saran-list"></div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
