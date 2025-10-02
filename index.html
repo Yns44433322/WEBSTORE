@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NADRETH HOSTING</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Banner Informasi -->
+    <div id="infoBanner" class="info-banner hidden">
+        <marquee id="bannerText"></marquee>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-section">
+                <img src="https://ar-hosting.pages.dev/1759059935771.jpg" alt="NADRETH HOSTING" class="logo">
+                <h1>NADRETH HOSTING</h1>
+            </div>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="profileBtn" class="profile-btn">
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="mainContent">
+        <!-- Landing Page -->
+        <section id="landingPage" class="page active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h2>NADRETH HOSTING</h2>
+                    <p>Solusi hosting terbaik untuk kebutuhan online Anda</p>
+                    <button id="listProductBtn" class="cta-btn">List Produk</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Akun Publik -->
+        <section id="publicAccountPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('landingPage')">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                    <h2>Akun Publik</h2>
+                </div>
+                <div class="account-card">
+                    <p>Anda sedang menggunakan akun publik (buyer)</p>
+                    <button id="loginDeveloperBtn" class="btn-primary">Login Developer</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Developer -->
+        <section id="loginPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('publicAccountPage')">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                    <h2>Login Developer</h2>
+                </div>
+                <form id="loginForm" class="form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+                <div class="login-info">
+                    <p><strong>Default Login:</strong></p>
+                    <p>Username: NadrethbyNuxz</p>
+                    <p>Password: 210108</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Akun Developer -->
+        <section id="developerAccountPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('landingPage')">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                    <h2>Akun Developer</h2>
+                </div>
+                <div class="account-card">
+                    <p>Anda login sebagai Developer</p>
+                    <div class="action-buttons">
+                        <button id="dashboardBtn" class="btn-primary">Dashboard Developer</button>
+                        <button id="logoutBtn" class="btn-secondary">Keluar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Developer -->
+        <section id="dashboardPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('developerAccountPage')">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                    <h2>Dashboard Developer</h2>
+                </div>
+                <div class="dashboard-tabs">
+                    <button class="tab-btn active" data-tab="products">Kelola Produk</button>
+                    <button class="tab-btn" data-tab="info">Kelola Informasi</button>
+                    <button class="tab-btn" data-tab="discounts">Kelola Diskon</button>
+                    <button class="tab-btn" data-tab="suggestions">Saran & Bantuan</button>
+                </div>
+
+                <!-- Kelola Produk -->
+                <div id="productsTab" class="tab-content active">
+                    <h3>Tambah Produk Baru</h3>
+                    <form id="productForm" class="form">
+                        <div class="form-group">
+                            <label for="productName">Nama Produk</label>
+                            <input type="text" id="productName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Harga Produk</label>
+                            <input type="number" id="productPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">Link Gambar Produk</label>
+                            <input type="url" id="productImage">
+                        </div>
+                        <div class="form-group">
+                            <label for="productBenefits">Benefit Produk</label>
+                            <textarea id="productBenefits" rows="4"></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="productSold">
+                                <span class="checkmark"></span>
+                                Status Sold
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="productPublished" checked>
+                                <span class="checkmark"></span>
+                                Publish Produk
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-primary">Tambah Produk</button>
+                    </form>
+
+                    <h3>Daftar Produk</h3>
+                    <div id="productsList" class="products-list">
+                        <!-- Produk akan ditampilkan di sini -->
+                    </div>
+                </div>
+
+                <!-- Kelola Informasi -->
+                <div id="infoTab" class="tab-content">
+                    <h3>Kelola Banner Informasi</h3>
+                    <form id="infoForm" class="form">
+                        <div class="form-group">
+                            <label for="bannerText">Teks Banner</label>
+                            <textarea id="bannerText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Simpan Banner</button>
+                    </form>
+                    <div class="info-note">
+                        <p><i class="fas fa-info-circle"></i> Banner akan tampil selama 24 jam, kemudian otomatis hilang.</p>
+                    </div>
+                </div>
+
+                <!-- Kelola Diskon -->
+                <div id="discountsTab" class="tab-content">
+                    <h3>Tambah Kode Diskon</h3>
+                    <form id="discountForm" class="form">
+                        <div class="form-group">
+                            <label for="discountCode">Kode Diskon</label>
+                            <input type="text" id="discountCode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="discountType">Jenis Potongan</label>
+                            <select id="discountType" required>
+                                <option value="percentage">Persentase (%)</option>
+                                <option value="nominal">Nominal (Rp)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="discountValue">Nilai Potongan</label>
+                            <input type="number" id="discountValue" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="discountExpiry">Tanggal Kadaluarsa</label>
+                            <input type="datetime-local" id="discountExpiry" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Tambah Diskon</button>
+                    </form>
+
+                    <h3>Daftar Diskon</h3>
+                    <div id="discountsList" class="discounts-list">
+                        <!-- Diskon akan ditampilkan di sini -->
+                    </div>
+                </div>
+
+                <!-- Saran & Bantuan -->
+                <div id="suggestionsTab" class="tab-content">
+                    <h3>Saran dari Pembeli</h3>
+                    <div id="suggestionsList" class="suggestions-list">
+                        <!-- Saran akan ditampilkan di sini -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- List Produk -->
+        <section id="productsPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('landingPage')">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                    <h2>Daftar Produk</h2>
+                </div>
+                <div id="productsGrid" class="products-grid">
+                    <!-- Produk akan ditampilkan di sini -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Detail Produk Modal -->
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="productDetail" class="product-detail">
+                    <!-- Detail produk akan ditampilkan di sini -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Saran Modal -->
+        <div id="suggestionModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Kirim Saran</h3>
+                <form id="suggestionForm" class="form">
+                    <div class="form-group">
+                        <label for="suggestionMessage">Pesan Saran</label>
+                        <textarea id="suggestionMessage" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Kirim Saran</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Pembayaran -->
+        <section id="paymentPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('productsPage')">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Produk
+                    </button>
+                    <h2>Pembayaran</h2>
+                </div>
+                
+                <div class="payment-container">
+                    <div class="product-summary">
+                        <h3 id="paymentProductName"></h3>
+                        <p class="price" id="paymentProductPrice"></p>
+                        <p class="product-note">Silakan selesaikan pembayaran dalam waktu 2 menit</p>
+                    </div>
+
+                    <div class="discount-section">
+                        <h4><i class="fas fa-tag"></i> Kode Diskon</h4>
+                        <div class="discount-input">
+                            <input type="text" id="discountInput" placeholder="Masukkan kode diskon (contoh: DISKON50)">
+                            <button id="applyDiscountBtn" class="btn-secondary">Terapkan</button>
+                        </div>
+                        <p id="discountMessage" class="discount-message"></p>
+                    </div>
+
+                    <div class="payment-methods">
+                        <h4><i class="fas fa-credit-card"></i> Pilih Metode Pembayaran</h4>
+                        <div class="payment-options">
+                            <div class="payment-option" data-method="ovo">
+                                <img src="https://ar-hosting.pages.dev/1759062672982.jpg" alt="OVO">
+                                <span>OVO</span>
+                            </div>
+                            <div class="payment-option" data-method="dana">
+                                <img src="https://ar-hosting.pages.dev/1759062895265.jpg" alt="Dana">
+                                <span>Dana</span>
+                            </div>
+                            <div class="payment-option" data-method="gopay">
+                                <img src="https://ar-hosting.pages.dev/1759062947442.jpg" alt="Gopay">
+                                <span>Gopay</span>
+                            </div>
+                            <div class="payment-option" data-method="qris">
+                                <img src="https://ar-hosting.pages.dev/1759062992641.jpg" alt="QRIS">
+                                <span>QRIS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="paymentDetails" class="payment-details hidden">
+                        <h4 id="selectedMethodName"></h4>
+                        <div id="paymentInfo"></div>
+                        
+                        <div class="countdown">
+                            <p><i class="fas fa-clock"></i> Selesaikan pembayaran dalam: <span id="countdownTimer">02:00</span></p>
+                        </div>
+                        
+                        <div class="payment-actions">
+                            <button id="cancelPaymentBtn" class="btn-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <a id="confirmPaymentBtn" class="btn-primary" target="_blank">
+                                <i class="fas fa-check"></i> Sudah Bayar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-footer">
+                    <p><i class="fas fa-info-circle"></i> Setelah pembayaran, Anda akan diarahkan ke WhatsApp untuk mengirim bukti transfer</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
