@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadreth Hosting</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div id="running-banner" class="running-banner">
+        <marquee></marquee>
+    </div>
+
+    <header>
+        <div class="theme-switcher">
+            <i class="fas fa-sun"></i>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+            <i class="fas fa-moon"></i>
+        </div>
+        <div id="avatar-icon" class="avatar-icon">
+             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2FlYWVhZSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMyAwIDEuMDktLjU5IDIuMDQgLTEuNDcgMi41N0MxMy45MyA5LjU0IDE0IDcuNzggMTQgNmMwLTEuNjYtMS4zNC0zLTMtM3ptMCAxNmMtMi42NyAwLTUuMDItMS4yNy02LjY3LTMuMjJDNi40MiAxNS44NyA4LjYyIDE1IDEyIDE1czUuNTggLjg3IDYuNjcgMi43OEMxNy4wMiAxOS43MyAxNC42NyAyMSAxMiAyMXoiLz48L3N2Zz4=" alt="Avatar">
+        </div>
+    </header>
+
+    <main id="app-container">
+
+        <section id="home" class="page active">
+            <div class="hero-section">
+                <img src="https://ar-hosting.pages.dev/1759059935771.jpg" alt="Nadreth Hosting Logo" class="main-logo">
+                <h1>NADRETH HOSTING</h1>
+                <button id="go-to-products-btn" class="btn btn-primary">List Produk</button>
+            </div>
+        </section>
+
+        <section id="account" class="page">
+            <div id="public-account-view">
+                <h2>Status Akun</h2>
+                <p>Anda sedang menggunakan akun publik (buyer).</p>
+                <button id="show-login-form-btn" class="btn">Login Developer</button>
+            </div>
+            <div id="developer-login-form" class="hidden">
+                <h2>Login Developer</h2>
+                <form id="login-form">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="button" id="cancel-login-btn" class="btn btn-secondary">Batal</button>
+                </form>
+            </div>
+            <div id="developer-account-view" class="hidden">
+                <h2>Status Akun</h2>
+                <p>Anda login sebagai Developer.</p>
+                <button id="developer-dashboard-btn" class="btn">Dashboard Developer</button>
+                <button id="logout-btn" class="btn btn-danger">Keluar</button>
+            </div>
+        </section>
+
+        <section id="developer-dashboard" class="page">
+            <h2>Dashboard Developer</h2>
+            <nav class="dashboard-nav">
+                <button class="nav-btn active" data-target="manage-products">Kelola Produk</button>
+                <button class="nav-btn" data-target="manage-banner">Informasi Banner</button>
+                <button class="nav-btn" data-target="manage-discounts">Kode Diskon</button>
+                <button class="nav-btn" data-target="manage-suggestions">Saran & Bantuan</button>
+                 <button id="back-to-home-from-dashboard" class="btn btn-secondary">Kembali ke Beranda</button>
+            </nav>
+
+            <div class="dashboard-content">
+                <div id="manage-products" class="dashboard-pane active">
+                    <h3>Kelola Produk</h3>
+                    <form id="product-form">
+                        <input type="hidden" id="product-id">
+                        <input type="text" id="product-name" placeholder="Nama Produk" required>
+                        <input type="number" id="product-price" placeholder="Harga Produk" required>
+                        <textarea id="product-benefits" placeholder="Benefit Produk (satu per baris)" required></textarea>
+                        <input type="url" id="product-image" placeholder="URL Gambar Produk">
+                        <div class="toggle-container">
+                            <label for="product-sold">Terjual:</label>
+                            <label class="switch"><input type="checkbox" id="product-sold"><span class="slider round"></span></label>
+                        </div>
+                        <div class="toggle-container">
+                            <label for="product-published">Publish:</label>
+                            <label class="switch"><input type="checkbox" id="product-published" checked><span class="slider round"></span></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Simpan Produk</button>
+                        <button type="button" id="clear-product-form" class="btn btn-secondary">Batal Edit</button>
+                    </form>
+                    <div id="manage-products-list"></div>
+                </div>
+
+                <div id="manage-banner" class="dashboard-pane">
+                    <h3>Informasi Banner</h3>
+                    <form id="banner-form">
+                        <input type="text" id="banner-text" placeholder="Teks berjalan untuk banner" required>
+                        <button type="submit" class="btn btn-primary">Simpan Banner (Aktif 24 Jam)</button>
+                    </form>
+                </div>
+
+                <div id="manage-discounts" class="dashboard-pane">
+                     <h3>Kelola Kode Diskon</h3>
+                    <form id="discount-form">
+                        <input type="text" id="discount-code" placeholder="Kode Diskon (e.g., PROMO10)" required>
+                        <select id="discount-type" required>
+                            <option value="percentage">Persentase (%)</option>
+                            <option value="nominal">Nominal (Rp)</option>
+                        </select>
+                        <input type="number" id="discount-value" placeholder="Nilai Diskon" required>
+                        <input type="date" id="discount-expiry" required>
+                        <button type="submit" class="btn btn-primary">Buat Kode Diskon</button>
+                    </form>
+                    <div id="discounts-list"></div>
+                </div>
+
+                <div id="manage-suggestions" class="dashboard-pane">
+                    <h3>Saran & Bantuan Masuk</h3>
+                    <div id="suggestions-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="page">
+            <h2>Produk Kami</h2>
+             <button id="back-to-home-from-products" class="btn btn-secondary back-button">Kembali</button>
+            <div id="products-list" class="products-grid"></div>
+        </section>
+
+        <section id="product-detail" class="page">
+            <button id="back-to-products-btn" class="btn btn-secondary back-button">Kembali</button>
+            <div id="product-detail-content"></div>
+        </section>
+
+        <section id="payment" class="page">
+             <div id="payment-timer"></div>
+            <div id="payment-method-selection">
+                <h2>Pilih Metode Pembayaran</h2>
+                <div class="payment-methods">
+                    <button class="payment-method-btn" data-method="OVO">
+                        <img src="https://ar-hosting.pages.dev/1759062672982.jpg" alt="OVO">
+                    </button>
+                     <button class="payment-method-btn" data-method="Dana">
+                        <img src="https://ar-hosting.pages.dev/1759062895265.jpg" alt="Dana">
+                    </button>
+                     <button class="payment-method-btn" data-method="Gopay">
+                        <img src="https://ar-hosting.pages.dev/1759062947442.jpg" alt="Gopay">
+                    </button>
+                     <button class="payment-method-btn" data-method="QRIS">
+                        <img src="https://ar-hosting.pages.dev/1759062992641.jpg" alt="QRIS">
+                    </button>
+                </div>
+                 <button id="cancel-payment-initial" class="btn btn-danger">Batalkan Pembelian</button>
+            </div>
+            <div id="payment-details" class="hidden">
+                 <div id="payment-info"></div>
+                 <div class="discount-section">
+                     <input type="text" id="discount-input" placeholder="Masukkan kode diskon">
+                     <button id="apply-discount-btn" class="btn">Gunakan</button>
+                 </div>
+                 <div id="discount-message"></div>
+                 <p class="final-price">Total Bayar: <span id="final-price-amount"></span></p>
+                 <div class="payment-actions">
+                    <button id="confirm-payment-btn" class="btn btn-primary">Sudah Bayar</button>
+                    <button id="cancel-payment-detail-btn" class="btn btn-secondary">Pilih Metode Lain</button>
+                 </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="suggestion-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Kirim Saran atau Pertanyaan</h3>
+            <form id="suggestion-form">
+                <input type="hidden" id="suggestion-product-id">
+                <textarea id="suggestion-text" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                <button type="submit" class="btn btn-primary">Kirim</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
